@@ -1,0 +1,19 @@
+@import './base.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  #root{
+    @apply h-full;
+  }
+
+  html,
+  body{
+    @apply h-full;
+    @apply select-none;
+    @apply bg-[rgb(50,56,65)];
+    @apply overflow-hidden;
+  }
+}
