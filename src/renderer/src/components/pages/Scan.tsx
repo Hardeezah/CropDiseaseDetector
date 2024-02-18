@@ -3,6 +3,18 @@ import { useCallback, useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Img from '@renderer/assets/bg2.jpg'
 import axios from 'axios'
+import ReactJoyride from 'react-joyride'
+
+const steps = [
+  {
+    target: '.home',
+    content: 'Click here to navigate to home screen'
+  },
+  {
+    target: '.capture',
+    content: 'Click here capture image'
+  }
+]
 
 const Scan = () => {
   const webcamRef = useRef<Webcam>(null)
@@ -17,6 +29,8 @@ const Scan = () => {
     if (imageSrc) {
       localStorage.setItem('capturedImage', imageSrc)
     }
+
+    history.push('/ecosystem', { imgSrc: imageSrc })
   }, [webcamRef])
 
   useEffect(() => {
@@ -32,7 +46,6 @@ const Scan = () => {
 
     const formData = new FormData()
 
-    
     formData.append('image', file)
 
     axios
@@ -56,55 +69,76 @@ const Scan = () => {
   }, [])
 
   return (
-    <div className="flex justify-center">
-      <div className="container justify-center absolute">
-        {imgSrc ? (
-          <img src={imgSrc} alt="webcam" />
-        ) : (
-          <Webcam
-            height={1500}
-            width={1500}
-            ref={webcamRef}
-            mirrored={true}
-            screenshotFormat="image/jpeg"
-          />
-        )}
-      </div>
-      <button className="absolute right-5 top-5 rounded-full bg-green-800 p-4">
-        <Link to="/home">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+    <>
+      <ReactJoyride
+        steps={steps}
+        continuous={true}
+        styles={{
+          options: {
+            arrowColor: '#5caeab',
+            backgroundColor: '#5caeab',
+            overlayColor: 'rgba(92, 174, 171, .3)',
+            primaryColor: '#5caeab',
+            textColor: '#fff'
+          },
+          spotlight: {
+            backgroundColor: 'transparent'
+          }
+        }}
+        
+        
+        showSkipButton={true}
+      />
+      <div className="flex justify-center">
+        <div className="container justify-center absolute">
+          {imgSrc ? (
+            <img src={imgSrc} alt="webcam" />
+          ) : (
+            <Webcam
+              height={1500}
+              width={1500}
+              ref={webcamRef}
+              mirrored={true}
+              screenshotFormat="image/jpeg"
             />
-          </svg>
-        </Link>
-      </button>
-      <div className="btn-container rounded-md mt-3 w-56 text-center absolute bottom-10 justify-center ">
-        {imgSrc ? (
-          <>
-            <button className="bg-green-600 p-2 rounded-md" onClick={recapture}>
-              Recapture
+          )}
+        </div>
+        <button className="absolute right-5 top-5 rounded-full bg-green-800 p-4 home">
+          <Link to="/home">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+              />
+            </svg>
+          </Link>
+        </button>
+        <div className="btn-container rounded-md mt-3 w-56 text-center absolute bottom-10 justify-center ">
+          {imgSrc ? (
+            <>
+              <button className="bg-green-600 p-2 rounded-md" onClick={recapture}>
+                Recapture
+              </button>
+              <button className="ml-5 rounded-md bg-blue-600 p-2" onClick={handleDetect}>
+                Detect Image
+              </button>
+            </>
+          ) : (
+            <button className="p-2 rounded-sm bg-green-600 capture" onClick={capture}>
+              Capture Image
             </button>
-            <button className="ml-5 rounded-md bg-blue-600 p-2" onClick={handleDetect}>
-              Detect Image
-            </button>
-          </>
-        ) : (
-          <button className="p-2 rounded-sm bg-green-600" onClick={capture}>
-            Capture Image
-          </button>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

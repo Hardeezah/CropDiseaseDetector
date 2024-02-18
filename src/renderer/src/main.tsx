@@ -6,6 +6,10 @@ import App from './App'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { Home } from './components/pages/Home'
 import Scan from './components/pages/Scan'
+import { About } from './components/pages/About'
+import { Help } from './components/pages/Help'
+import { Ecosystem } from './components/pages/Ecosystem'
+import { History } from './components/pages/History'
 const router = createHashRouter([
   {
     path: '/',
@@ -30,7 +34,39 @@ const router = createHashRouter([
         <Scan />
       </>
     ),
-  }
+  },
+  {
+    path: '/about',
+    element: (
+      <>
+        <About />
+      </>
+    ),
+  },
+  {
+    path: '/help-center',
+    element: (
+      <>
+        <Help />
+      </>
+    ),
+  },
+  {
+    path: '/ecosystem',
+    element: (
+      <>
+        <Ecosystem />
+      </>
+    ),
+  },
+  {
+    path: '/history',
+    element: (
+      <>
+        <History />
+      </>
+    ),
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
