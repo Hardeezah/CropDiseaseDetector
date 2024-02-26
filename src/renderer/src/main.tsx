@@ -10,6 +10,7 @@ import { About } from './components/pages/About'
 import { Help } from './components/pages/Help'
 import { Ecosystem } from './components/pages/Ecosystem'
 import { History } from './components/pages/History'
+import { Solution } from './components/pages/Solution'
 const router = createHashRouter([
   {
     path: '/',
@@ -64,6 +65,14 @@ const router = createHashRouter([
     element: (
       <>
         <History />
+      </>
+    ),
+  },
+    {
+    path: '/solution',
+    element: (
+      <>
+        <Solution />
       </>
     ),
   },

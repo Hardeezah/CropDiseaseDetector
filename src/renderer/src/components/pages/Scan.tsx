@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Img from '@renderer/assets/bg2.jpg'
 import axios from 'axios'
 import ReactJoyride from 'react-joyride'
+import { useHistory } from 'react-router-dom';
 
 const steps = [
   {
@@ -17,6 +18,7 @@ const steps = [
 ]
 
 const Scan = () => {
+  const history = useHistory();
   const webcamRef = useRef<Webcam>(null)
   const [file, setFile] = useState<string | null>(null)
   const [imgSrc, setImgSrc] = useState<string | null>(null)
@@ -27,22 +29,38 @@ const Scan = () => {
     console.log(imageSrc)
 
     if (imageSrc) {
-      localStorage.setItem('capturedImage', imageSrc)
+      const blob = dataURItoBlob(imageSrc);
+      const newFile = new File([blob], `capturedImage_${Date.now()}.png`, { type: 'image/png' });
+      setFile(newFile);
+      localStorage.setItem('capturedImage', imageSrc);
     }
 
-    history.push('/ecosystem', { imgSrc: imageSrc })
   }, [webcamRef])
 
   useEffect(() => {
     const imageData = localStorage.getItem('capturedImage')
 
     if (imageData) {
-      setFile(imageData)
+      const blob = dataURItoBlob(imageData);
+      const newFile = new File([blob], `capturedImage_${Date.now()}.png`, { type: 'image/png' });
+      setFile(newFile);
     }
   }, [capture])
 
+  const dataURItoBlob = (dataURI: string): Blob => {
+    const byteString = atob(dataURI.split(',')[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ab], { type: 'image/png' });
+  };
+
   const handleDetect = () => {
-    const apiUrl = 'http://172.20.206.21:5000/api/detect_disease/'
+    const apiUrl = 'https://09f9-196-220-66-189.ngrok-free.app/api/users/'
 
     const formData = new FormData()
 
@@ -56,7 +74,9 @@ const Scan = () => {
         }
       })
       .then((response) => {
-        console.log(response.data)
+        const responseData = response.data;
+
+        history.push('/solution', { responseData });
       })
       .catch((error) => {
         console.error('Error:', error)

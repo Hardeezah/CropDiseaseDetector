@@ -2,6 +2,7 @@ import Logo from '../assets/logo.png'
 import help from '../assets/help.svg'
 import about from '../assets/about.svg'
 import { Link } from 'react-router-dom'
+import menu from '../assets/menu.png'
 
 const Navbar = () => {
   return (
@@ -18,6 +19,35 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl text-[rgb(50,56,65)]">CropDiseaseDetector</a>
       </div>
       <div className="navbar-end">
+        <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="btn m-1">
+            <img src={menu} width={20} alt="" />
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 bg-green-500 "
+          >
+            <li>
+              <Link to="/about" className='flex gap-3'>
+                <img src={about} alt="logo" width={30} height={25} />
+                <p>About</p>
+              </Link>
+            </li>
+            <li>
+              <Link to="/help-center" className='flex gap-3'>
+                <img src={help} alt="logo" width={30} height={25} />
+                <p>Help</p>
+              </Link>
+            </li>
+            <li>
+              <Link to="/help-center" className='flex gap-3'>
+                
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {/* <div className="navbar-end">
         <button className="btn btn-ghost btn-circle about">
           <Link to="/about">
             <img src={about} alt="logo" width={30} height={25} />
@@ -30,7 +60,7 @@ const Navbar = () => {
             </div>
           </Link>
         </button>
-      </div>
+      </div> */}
     </div>
   )
 }
