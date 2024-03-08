@@ -9,12 +9,20 @@ const steps = [
     content: 'Welcome!! Please spare a minute to learn about our page'
   },
   {
+    target: '.navbar > .navbar-end',
+    content: 'Click on the dropdown menu to dislay more options'
+  },
+  {
     target: '.navbar > .navbar-end > .about',
     content: 'Learn more about the brains behind this device'
   },
   {
-    target: '.navbar > .navbar-end > .help',
+    target: '.help',
     content: "For help click on this button"
+  },
+  {
+    target: '.navbar > .navbar-end > .notification',
+    content: "Click here to check for notifications"
   },
   {
     target: '.scan',

@@ -3,6 +3,7 @@ import help from '../assets/help.svg'
 import about from '../assets/about.svg'
 import { Link } from 'react-router-dom'
 import menu from '../assets/menu.png'
+import notification from '../assets/notification.png'
 
 const Navbar = () => {
   return (
@@ -40,8 +41,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/help-center" className='flex gap-3'>
-                
+            <Link to="/" className='flex gap-3'>
+                <img src={notification} alt="logo" width={30} height={25} />
+                <p>Notifications</p>
               </Link>
             </li>
           </ul>

@@ -14,6 +14,5 @@
     @apply h-full;
     @apply select-none;
     @apply bg-gray-50;
-    @apply overflow-hidden;
   }
 }
