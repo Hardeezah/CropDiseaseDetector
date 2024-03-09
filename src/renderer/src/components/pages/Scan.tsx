@@ -3,8 +3,16 @@ import { useCallback, useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Img from '@renderer/assets/bg2.jpg';
 import axios from 'axios';
+<<<<<<< HEAD
 
 const Scan = () => {
+=======
+import { useNavigate } from 'react-router-dom';
+
+
+const Scan = () => {
+  const navigate = useNavigate();
+>>>>>>> 452674aa6e0ef8b9d113d78de543d1c3af7aed27
   const webcamRef = useRef<Webcam>(null);
   const [file, setFile] = useState<File | null>(null);
   const [imgSrc, setImgSrc] = useState<string | null>(null);
@@ -57,7 +65,13 @@ const Scan = () => {
         },
       })
       .then((response) => {
+<<<<<<< HEAD
         console.log(response.data);
+=======
+        // console.log(response.data);
+
+        navigate('/solution', { state: { responseData: response.data } });
+>>>>>>> 452674aa6e0ef8b9d113d78de543d1c3af7aed27
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -122,4 +136,9 @@ const Scan = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Scan;
+=======
+export default Scan;
+  
+>>>>>>> 452674aa6e0ef8b9d113d78de543d1c3af7aed27
