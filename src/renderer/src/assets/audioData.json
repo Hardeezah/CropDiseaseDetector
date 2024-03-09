@@ -1,10 +1,46 @@
 [
   {
-    "title": "Wheat Rust",
-    "src": "../../assets/audio/wheat_rust.mp3"
+    "title": "CERCOSPORA LEAF SPOT",
+    "src": "./Audio/Maize_01.m4a"
   },
   {
-    "title": "Corn Smut",
-    "src": "../../assets/audio/corn_smut.mp3"
+    "title": "COMMON RUST",
+    "src": "./Audio/Maize_002.m4a"
+  },
+  {
+    "title": "NORTHERN LEAF BLIGHT",
+    "src": "./Audio/Maize_003.m4a"
+  },
+  {
+    "title": "Bacterial Spot",
+    "src": "./Audio/Tomato_001.m4a"
+  },
+  {
+    "title": "Early Blight",
+    "src": "./Audio/Tomato_002.m4a"
+  },
+  {
+    "title": "Leaf Mold",
+    "src": "./Audio/Tomato_003.m4a"
+  },
+  {
+    "title": "Septoria Leaf Spot",
+    "src": "./Audio/Tomato_004.m4a"
+  },
+  {
+    "title": "Spider Mites",
+    "src": "./Audio/Tomato_005.m4a"
+  },
+  {
+    "title": "Target Spot",
+    "src": "./Audio/Tomato_006.m4a"
+  },
+  {
+    "title": "Tomato Mosaic Virus (ToMV)",
+    "src": "./Audio/Tomato_007.m4a"
+  },
+  {
+    "title": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+    "src": "./Audio/Tomato_008.m4a"
   }
 ]
