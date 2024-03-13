@@ -1,10 +1,13 @@
 import Webcam from 'react-webcam';
 import { useCallback, useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';  
+
 import Img from '@renderer/assets/bg2.jpg';
 import axios from 'axios';
 
 const Scan = () => {
+  const navigate = useNavigate();
+  
   const webcamRef = useRef<Webcam>(null);
   const [file, setFile] = useState<File | null>(null);
   const [imgSrc, setImgSrc] = useState<string | null>(null);
@@ -58,6 +61,7 @@ const Scan = () => {
       })
       .then((response) => {
         console.log(response.data);
+        navigate('/solution', { state: { responseData: response.data } });
       })
       .catch((error) => {
         console.error('Error:', error);
