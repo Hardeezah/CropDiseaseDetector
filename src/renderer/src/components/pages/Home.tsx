@@ -1,7 +1,7 @@
 import Navbar from '../Navbar'
-import { BottomNav } from '../BottomNav'
 import { Card } from '../Card'
 import ReactJoyride from 'react-joyride'
+import bg from '../../assets/tomato-bg.jpeg'
 
 const steps = [
   {
@@ -9,33 +9,21 @@ const steps = [
     content: 'Welcome!! Please spare a minute to learn about our page'
   },
   {
-    target: '.navbar > .navbar-end',
+    target: '.dropdown',
     content: 'Click on the dropdown menu to dislay more options'
-  },
-  {
-    target: '.navbar > .navbar-end > .about',
-    content: 'Learn more about the brains behind this device'
-  },
-  {
-    target: '.help',
-    content: "For help click on this button"
-  },
-  {
-    target: '.navbar > .navbar-end > .notification',
-    content: "Click here to check for notifications"
-  },
-  {
-    target: '.scan',
-    content: 'Click here to scan affected plants'
   },
   {
     target: '.ecosystem',
     content: 'Click here to share information'
   },
   {
+    target: '.scan',
+    content: 'Click here to scan affected plant'
+  },
+  {
     target: '.history',
-    content: 'Click here to see previous scan results'
-  }
+    content: 'Click here to view previously scanned plants'
+  },
 ]
 
 export const Home = () => {
@@ -61,9 +49,9 @@ export const Home = () => {
         showSkipButton={true}
       />
       <div className=" w-full h-full">
+        <img src={bg} alt="background-img" className="absolute h-full w-full top-0 " />
         <Navbar />
         <Card />
-        <BottomNav />
       </div>
     </>
   )

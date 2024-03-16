@@ -47,8 +47,9 @@ const Scan = () => {
     const apiUrl = 'http://172.20.206.21:5000/api/detect_disease/';
     const formData = new FormData();
 
-    formData.append('image', file);
-
+    if (file){
+      formData.append('image', file);
+    }
     axios
       .post(apiUrl, formData, {
         headers: {

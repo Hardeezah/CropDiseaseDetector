@@ -7,37 +7,41 @@ import notification from '../assets/notification.png'
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 bg-gray-50 rounded-md">
+    <div className="navbar bg-base-100 bg-transparent rounded-md relative">
       <div className="navbar-start">
-        <img src={Logo} alt="logo" width={40} height={40} />
+        <img src={Logo} alt="logo" width={50} height={40} className='bg-white rounded-full' />
       </div>
-      <div className="navbar-center">
-        <a className="btn btn-ghost text-xl text-[rgb(50,56,65)]">CropDiseaseDetector</a>
+      <div className="navbar-center flex-col ">
+        <a className="btn btn-ghost text-xl text-white">CropDiseaseDetector</a>
+        <p className=''>your one-step solution</p>
       </div>
       <div className="navbar-end">
         
         <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn m-1">
+          <div tabIndex={0} role="button" className="btn m-1 one">
             <img src={menu} width={20} alt="" />
           </div>
           <ul
             tabIndex={0}
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 bg-green-500 "
           >
-            <li>
-              <Link to="/about" className="flex gap-3">
-                <img src={about} alt="logo" width={30} height={25} />
+            <li className='about'>
+              <Link to="/about" className="flex gap-3 about">
+                <img src={about} alt="logo" width={30} height={25} className='ml-3' />
                 <p>About</p>
               </Link>
             </li>
             <li>
-              <Link to="/help-center" className="flex gap-3">
+              <Link to="/help-center" className="flex gap-3 help">
                 <img src={help} alt="logo" width={30} height={25} />
                 <p>Help</p>
               </Link>
             </li>
             <li>
-              <Link to="/help-center" className="flex gap-3"></Link>
+              <Link to="/help-center" className="flex gap-3 notif">
+                <img src={notification} alt="logo" width={30} height={25} />
+                <p> Notifications</p>
+              </Link>
             </li>
           </ul>
         </div>
